@@ -18,7 +18,19 @@
     <ClCompile Include="Source\glad.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Source\take_indices.cpp">
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\shaderClass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VBO.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EBO.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VAO.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,9 +47,23 @@
     <ClInclude Include="include\glad\glad.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\shaderClass.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\VBO.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\EBO.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\VAO.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib-vc2022\glfw3.dll" />
+    <None Include="Shaders\default.vert" />
+    <None Include="Shaders\default.frag" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib-vc2022\glfw3.lib" />

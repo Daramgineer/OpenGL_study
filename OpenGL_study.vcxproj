@@ -133,10 +133,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\EBO.cpp" />
     <ClCompile Include="Source\glad.c" />
-    <ClCompile Include="Source\take_indices.cpp" />
+    <ClCompile Include="Source\shaderClass.cpp" />
+    <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\VAO.cpp" />
+    <ClCompile Include="Source\VBO.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\EBO.h" />
+    <ClInclude Include="Headers\shaderClass.h" />
+    <ClInclude Include="Headers\VAO.h" />
+    <ClInclude Include="Headers\VBO.h" />
     <ClInclude Include="include\glad\glad.h" />
     <ClInclude Include="include\GLFW\glfw3.h" />
     <ClInclude Include="include\GLFW\glfw3native.h" />
@@ -144,6 +152,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="lib-vc2022\glfw3.dll" />
+    <None Include="Shaders\default.frag" />
+    <None Include="Shaders\default.vert" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib-vc2022\glfw3.lib" />
