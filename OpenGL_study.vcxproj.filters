@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\make_window.cpp">
+    <ClCompile Include="Source\glad.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Source\glad.c">
+    <ClCompile Include="Source\display_tri.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

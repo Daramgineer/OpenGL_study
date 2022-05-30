@@ -133,7 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\make_window.cpp" />
+    <ClCompile Include="Source\display_tri.cpp" />
     <ClCompile Include="Source\glad.c" />
   </ItemGroup>
   <ItemGroup>
