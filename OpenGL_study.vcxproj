@@ -133,8 +133,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\display_tri.cpp" />
     <ClCompile Include="Source\glad.c" />
+    <ClCompile Include="Source\take_indices.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\glad\glad.h" />

@@ -18,7 +18,7 @@
     <ClCompile Include="Source\glad.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Source\display_tri.cpp">
+    <ClCompile Include="Source\take_indices.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

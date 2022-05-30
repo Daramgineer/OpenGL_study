@@ -55,7 +55,7 @@ int main()
 	//Vertex Shader 객체 생성 및 참조 가져옴
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	//Vertex Shader 객체로 Vertex Shader source 호출
-	glShaderSource(vertexShader, 1, & vertexShaderSource, NULL);
+	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
 	//Vertex Shader를 code에 컴파일
 	glCompileShader(vertexShader);
 
@@ -86,15 +86,25 @@ int main()
 		-0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f, //좌
 		0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f, //우
 		0.0f, 0.5f * float(sqrt(3)) * 2 / 3, 0.0f, //상
+		-0.5f / 2, 0.5f * float(sqrt(3)) / 6, 0.0f, //안쪽 좌
+		0.5f / 2, 0.5f * float(sqrt(3)) / 6, 0.0f, //안쪽 우
+		0.0f, -0.5f * float(sqrt(3)) / 3, 0.0f //안쪽 하
+	};
+
+	GLuint indices[] =
+	{
+		0, 3, 5, //하단 좌측 삼각형 정점
+		3, 2, 4, //하단 우측 삼각형 정점
+		5, 4, 1 //상단 삼각형 정점
 	};
 
 	//Vertex Array Object & Vertex Buffer Object 컨테이너 생성
-	GLuint VAO, VBO;
+	GLuint VAO, VBO, EBO;
 
 	//VAO와 VBO, EBO에 각각 1개의 객체 생성
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
-
+	glGenBuffers(1, &EBO);
 
 	//VAO와 current Vertex Array 객체 결합
 	glBindVertexArray(VAO);
@@ -103,6 +113,10 @@ int main()
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	//VBO에 결합된 vertices 정보 전달
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	//EBO에 결합된 indices 정보 전달
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
 
 	//OpenGL이 VBO를 인식하도록 Vertex 특성 전달
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
@@ -112,6 +126,8 @@ int main()
 	//VAO & VBO를 0으로 묶어서 이후 수정하는 실수 방지
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
 
 	//Main while loop
 	while (!glfwWindowShouldClose(window))
@@ -125,16 +141,19 @@ int main()
 		//OpenGL이 사용하도록 VAO 결합
 		glBindVertexArray(VAO);
 		//GL_TRIANGLES를 사용하여 삼각형 그림
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		//glDrawArrays(GL_TRIANGLES, 0, 3);
+
+		glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
 		//Back Buffer를 Front Buffer와 교환
 		glfwSwapBuffers(window);
 		//모든 GLFW 이벤트 처리
 		glfwPollEvents();
 	}
-	
+
 	//위에서 생성했던 객체들 삭제
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &EBO);
 	glDeleteProgram(shaderProgram);
 
 	//프로그램 종료 전 Window삭제
